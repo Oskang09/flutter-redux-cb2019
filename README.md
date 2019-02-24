@@ -1,3 +1,15 @@
+### Clone
+
+For master branch come with example, you can clone and run `flutter doctor && flutter run`
+```
+git clone --single-branch --branch master https://github.com/Oskang09/Flutter-CB2019.git
+```
+
+For codebase branch just empty codebase, but setup done you can just start your development.
+```
+git clone --single-branch --branch codebase https://github.com/Oskang09/Flutter-CB2019.git
+```
+
 ### Plugins 
 
 * Dart as "Programming Language"
