@@ -142,6 +142,8 @@ runApp(
 
 ### File structure explaination
 
+<img src="https://github.com/Oskang09/Flutter-CB2019/blob/master/media/file_structure.jpg" />
+
 ```
 Almost all of the action must have 3 state if they wont resolve on main thread like ( Api Call )
 - LOADING, SUCCESS, FAIL
@@ -177,4 +179,4 @@ Related files & part
 
 Thanks to Flutter Team has developed such a very good framework. Also thanks to one of my friends that is front-end developer i have used some example from him there and others developer who contribute and build some very useful framework like fluro and redux.
 
-<img src="https://steemitimages.com/0x0/https://cdn.steemitimages.com/DQmV9BLh8H1joRX7XxaaiFb4vbip6xMNjrzUw4FU2NpkBUr/dart-logo.png" height="48"> <img src="https://cdn-images-1.medium.com/max/1600/1*gqBLqChWtWLq33DvWm6Nog.png" height="48"> <img src="https://cdn-images-1.medium.com/max/1600/1*BpaqVMW2RjQAg9cFHcX1pw.png" height="48"> <img src="https://camo.githubusercontent.com/86862a3b79fdabd363862b7d7db6b5952cd6fc4d/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f70726f647563742d6c6f676f732f6c6f676f5f666c75726f2e706e67" height="48">  
+<img src="https://github.com/Oskang09/Flutter-CB2019/blob/master/media/dart.png" height="48"> <img src="https://github.com/Oskang09/Flutter-CB2019/blob/master/media/flutter.png" height="48"> <img src="https://github.com/Oskang09/Flutter-CB2019/blob/master/media/fluro.png" height="48"> <img src="https://github.com/Oskang09/Flutter-CB2019/blob/master/media/redux.png" height="48">  
