@@ -1,7 +1,42 @@
+![Dart](https://steemitimages.com/0x0/https://cdn.steemitimages.com/DQmV9BLh8H1joRX7XxaaiFb4vbip6xMNjrzUw4FU2NpkBUr/dart-logo.png)
+![Flutter](https://cdn-images-1.medium.com/max/1600/1*gqBLqChWtWLq33DvWm6Nog.png)
+
 ### Plugins 
 
+* Dart as "Programming Language"
+* Flutter as "SDK"
 * Redux as "State Management"
 * Fluro as "Navigator Router"
+
+### pubspec.yaml
+
+```yaml
+name: flutter_codebase
+description: A new Flutter project.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.0.0-dev.68.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_redux: 0.5.2
+  redux: 3.0.0
+  fluro: ^1.4.0
+  
+  cupertino_icons: ^0.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
+```
 
 ### Main Setup
 
@@ -106,4 +141,37 @@ runApp(
         ),
     )
 );
+```
+
+### File structure explaination
+
+```
+Almost all of the action must have 3 state if they wont resolve on main thread like ( Api Call )
+- LOADING, SUCCESS, FAIL
+
+* LOADING for define you already requesting for action & won't receive anymore ( must make a variables 'isLoading' for checking )
+* SUCCESS for define your request already success 
+* FAIL    for define your request has failed
+
+So for the workflow be like
+
+1) [UI Action] ( Button Tap, GestureDetector or anything else can dispatch action )
+2) [Middleware] receive action & run async middleware ( since async so won't block main thread )
+3) [Reducer] receive action also if middleware doesn't blocked. reducers will resolve based on give action and return new state.
+    (!) Missing 'next(action);' your action will be stop when middleware.
+4) [UI] receive new state and update components with new incoming state.
+
+(*) Optional (5) [Selectors]
+When receiving new state you can use selectors to filter the data based on you defined function such as
+filtering product price lower then 5 from a list of all products.
+
+Lastly [State] is the one who has been pass around workflow like a football and make it work like a magic.
+
+Related files & part 
+* actions.dart   - Storing actions state classes
+* async.dart     - Storing async actions function
+* models.dart     - Storing page state & models
+* reducers.dart  - Storing reducers function
+* selectors.dart - Storing selectors function
+* views.dart     - Storing UI code
 ```
