@@ -203,7 +203,7 @@ Almost all of the action must have 3 state if they wont resolve on main thread l
 
 Depend on yourself likes, not needed for 100% follow my pattern.
 
-### Configuration
+### Configuration ( /config/ )
 
 * appstate.dart  - AppState ( Main state for the whole app ) 
 * asyncs.dart    - Async container ( Storing all of the async middleware like injector ) 
@@ -211,7 +211,7 @@ Depend on yourself likes, not needed for 100% follow my pattern.
 * router.dart    - Fluro router setup code
 * theme.dart     - App theme setup code
 
-### Stateful Widget
+### Stateful Widget ( /pages/{widget_name} )
 
 * actions.dart    - Storing actions state classes
 * async.dart      - Storing async actions function
@@ -220,7 +220,7 @@ Depend on yourself likes, not needed for 100% follow my pattern.
 * selectors.dart  - Storing selectors function
 * views.dart      - Storing UI code
 
-### Stateless Widget
+### Stateless Widget ( /pages/{widget_name.dart} )
 
 * {widget_name}.dart  - Storing UI code
 
