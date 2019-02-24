@@ -2,7 +2,7 @@ class TodoState
 {
     String doing;
     List<Todo> todos = List();
-    List<Todo> filteredTodo = List();
+    List<Todo> filteredTodo;
 }
 
 class Todo

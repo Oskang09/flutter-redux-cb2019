@@ -3,6 +3,7 @@ import 'package:flutter_codebase/pages/TodoPage/actions.dart';
 import 'package:flutter_codebase/pages/TodoPage/models.dart';
 import 'package:flutter_codebase/config/appstate.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:redux/redux.dart';
 
 class TodoPage extends StatefulWidget
 {
@@ -17,7 +18,7 @@ class _TodoPage extends State<TodoPage>
     TextEditingController nameController = TextEditingController();
 
     @override
-    Widget build(BuildContext context) 
+    Widget build(BuildContext context)
     {
         return Scaffold(
             body: body(),
@@ -35,28 +36,25 @@ class _TodoPage extends State<TodoPage>
                         color: Colors.black,
                         height: 30,
                     ),
-                    Expanded(
-                        child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                                nameInput(),
-                                filterInput(),
-                                Expanded(
-                                    child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: <Widget>[
-                                            addButton(),
-                                            asyncCheckbox()
-                                        ],
-                                    ),
-                                )
-                            ],
-                        ),
+                    Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                            nameInput(),
+                            filterInput(),
+                            Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                    addButton(),
+                                    asyncCheckbox()
+                                ],
+                            ),
+                        ],
                     ),
                     Divider(
                         color: Colors.black,
                         height: 30,
                     ),
+                    buttonBar(),
                     display()
                 ]
             )
@@ -66,8 +64,8 @@ class _TodoPage extends State<TodoPage>
     Widget doingText()
     {
         return StoreConnector<AppState, String>(
-            converter: (store) => store.state.todo.doing, 
-            builder: (context, doing) 
+            converter: (store) => store.state.todo.doing,
+            builder: (context, doing)
             {
                 return Container(
                     margin: EdgeInsets.only(top: 30, bottom: 30),
@@ -95,7 +93,7 @@ class _TodoPage extends State<TodoPage>
                         value: filter,
                         child: Text(filter.toString()),
                     )
-                ).toList(), 
+                ).toList(),
                 onChanged: (action) => this.setState(() => selectedFilter = action)
             )
         );
@@ -109,7 +107,7 @@ class _TodoPage extends State<TodoPage>
                 controller: nameController,
                 decoration: InputDecoration(
                     labelText: "Todo's name",
-                    hintText: "Please input your todo name" 
+                    hintText: "Please input your todo name"
                 ),
             ),
         );
@@ -118,7 +116,7 @@ class _TodoPage extends State<TodoPage>
     Widget asyncCheckbox()
     {
         return Checkbox(
-            value: isAsyncAction, 
+            value: isAsyncAction,
             onChanged: (action) => this.setState(() => isAsyncAction = action)
         );
     }
@@ -126,7 +124,7 @@ class _TodoPage extends State<TodoPage>
     Widget addButton()
     {
         return StoreConnector<AppState, VoidCallback>(
-            converter: (store) => () 
+            converter: (store) => ()
             {
                 int id = 0;
                 if (store.state.todo.todos.length == 1)
@@ -154,35 +152,74 @@ class _TodoPage extends State<TodoPage>
         );
     }
 
+    Widget buttonBar()
+    {
+        return Container(
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                    StoreConnector<AppState, VoidCallback>(
+                        converter: (store) => () => store.dispatch(GetAllTodo()),
+                        builder: (context, filter)
+                        {
+                            return RaisedButton(
+                                child: Text("ALL"), 
+								onPressed: filter
+                            );
+                        },
+                    ),
+                    StoreConnector<AppState, VoidCallback>(
+                        converter: (store) => () => store.dispatch(GetTodoByFilter(filter: TodoFilter.COMPLETE)),
+                        builder: (context, filter)
+                        {
+                            return RaisedButton(
+                                child: Text("COMPLETE"), 
+								onPressed: filter
+                            );
+                        },
+                    ),
+                    StoreConnector<AppState, VoidCallback>(
+                        converter: (store) => () => store.dispatch(GetTodoByFilter(filter: TodoFilter.INCOMPLETE)),
+                        builder: (context, filter)
+                        {
+                            return RaisedButton(
+                                child: Text("INCOMPLETE"), 
+								onPressed: filter
+                            );
+                        },
+                    )
+                ],
+            ),
+        );
+    }
+
     Widget display()
     {
         return StoreConnector<AppState, List<Todo>>(
-            converter: (store) => store.state.todo.todos,
+            converter: (store) => store.state.todo.filteredTodo != null ? store.state.todo.filteredTodo : store.state.todo.todos,
             builder: (context, todos)
             {
-                /*
-                    Delete Button & Filter
-
-                    then can expose codebase introducing.
-                */
                 return Expanded(
                     child: ListView(
                         shrinkWrap: true,
                         children: todos.map(
-                            (todo) => ListTile(
-                                leading: Text(todo.id.toString()),
-                                subtitle: Text(todo.filter.toString()),
-                                title: Text(todo.name),
-                                trailing: RaisedButton(
-                                    child: Text("DEL"),
-                                    onPressed: () 
-                                    {
-                                        
-                                    },
-                                )
-                            )
-                        ).toList() ?? <Widget>[ Center(child: Text("Empty todo.")) ],
-                    )
+                            (todo) => StoreConnector<AppState, Store<AppState>>(
+								converter: (store) => store,
+								builder: (context, store)
+								{
+									return ListTile(
+										leading: Text(todo.id.toString()),
+										subtitle: Text(todo.filter.toString()),
+										title: Text(todo.name),
+										trailing: RaisedButton(
+											child: Text("DEL"),
+											onPressed: () => store.dispatch(DeleteTodo( id: todo.id ))
+										)
+									);
+								}
+							)
+                        ).toList() ?? <Widget>[ Center(child: Text("Empty todo.")) ]
+                    ),
                 );
             }
         );

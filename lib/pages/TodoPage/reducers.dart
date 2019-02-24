@@ -32,24 +32,19 @@ TodoState todoReducer(TodoState prevState, dynamic action)
         switch (action.filter)
         {
             case TodoFilter.COMPLETE:
-                prevState.filteredTodo = doneTodoSelector(prevState);
+                prevState.filteredTodo = doneTodoSelector(prevState.todos);
                 prevState.doing = "Filtering todo with COMPLETE Selector";
                 break;
             case TodoFilter.INCOMPLETE:
-                prevState.filteredTodo = incompleteTodoSelector(prevState);
+                prevState.filteredTodo = incompleteTodoSelector(prevState.todos);
                 prevState.doing = "Filtering todo with INCOMPLETE Selector";
                 break;
         }
     }
     else if (action is GetAllTodo)
     {
-        prevState.filteredTodo = todoSelector(prevState);
+        prevState.filteredTodo = prevState.todos;
         prevState.doing = "Get all todo.";
     }
-    else if (action is GetTodoNameShorterThanSix)
-    {
-        prevState.filteredTodo = nameLengthTodoSelector(prevState);
-        prevState.doing = "Filtering todo that name shorter than six.";
-    }
-    return prevState;
+	return prevState;
 }

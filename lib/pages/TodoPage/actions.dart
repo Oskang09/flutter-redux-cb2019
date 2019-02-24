@@ -1,10 +1,13 @@
 import 'package:flutter_codebase/pages/TodoPage/models.dart';
 
 class GetAllTodo {}
-class GetTodoNameShorterThanSix {}
 
 class GetTodoByFilter
 {
+    GetTodoByFilter({
+        this.filter
+    });
+    
     TodoFilter filter;
 }
 
