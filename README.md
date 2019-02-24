@@ -115,6 +115,7 @@ final store = new Store<AppState>(
 - flutter/redux_future ( https://pub.dartlang.org/packages/redux_future )
 
 (!) Why i don't use the existing framework ?
+
 For personal interest i rather build myself instead of framework since i don't read documentation too much,
 at least i know what i'm doing and easily maintain for future works. Also another issues is the syntax all of 
 them i don't like hahha, if in react-native i would use redux_saga.
