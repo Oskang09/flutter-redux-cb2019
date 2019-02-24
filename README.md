@@ -1,6 +1,3 @@
-![Dart](https://steemitimages.com/0x0/https://cdn.steemitimages.com/DQmV9BLh8H1joRX7XxaaiFb4vbip6xMNjrzUw4FU2NpkBUr/dart-logo.png)
-![Flutter](https://cdn-images-1.medium.com/max/1600/1*gqBLqChWtWLq33DvWm6Nog.png)
-
 ### Plugins 
 
 * Dart as "Programming Language"
@@ -175,3 +172,11 @@ Related files & part
 * selectors.dart - Storing selectors function
 * views.dart     - Storing UI code
 ```
+
+### Credits
+
+Thanks to Flutter Team has developed such a very good framework. Also thanks to one of my friends that is front-end developer i have used some example from him there.
+
+![Dart](https://steemitimages.com/0x0/https://cdn.steemitimages.com/DQmV9BLh8H1joRX7XxaaiFb4vbip6xMNjrzUw4FU2NpkBUr/dart-logo.png)
+
+![Flutter](https://cdn-images-1.medium.com/max/1600/1*gqBLqChWtWLq33DvWm6Nog.png)
