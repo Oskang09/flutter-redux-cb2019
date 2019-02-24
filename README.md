@@ -181,6 +181,7 @@ Some good references for sharing when i use to develop & build flutter app.
 
 * https://github.com/Solido/awesome-flutter
 * https://medium.com/flutter-io
+* https://stackoverflow.com/
 
 
 ### Credits
