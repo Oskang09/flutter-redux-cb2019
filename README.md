@@ -140,20 +140,9 @@ runApp(
 );
 ```
 
-### File structure explaination
-
-<img src="https://github.com/Oskang09/Flutter-CB2019/blob/master/media/file_structure.jpg" />
+### Workflow explaination
 
 ```
-Almost all of the action must have 3 state if they wont resolve on main thread like ( Api Call )
-- LOADING, SUCCESS, FAIL
-
-* LOADING for define you already requesting for action & won't receive anymore ( must make a variables 'isLoading' for checking )
-* SUCCESS for define your request already success 
-* FAIL    for define your request has failed
-
-So for the workflow be like
-
 1) [UI Action] ( Button Tap, GestureDetector or anything else can dispatch action )
 2) [Middleware] receive action & run async middleware ( since async so won't block main thread )
 3) [Reducer] receive action also if middleware doesn't blocked. reducers will resolve based on give action and return new state.
@@ -166,14 +155,43 @@ filtering product price lower then 5 from a list of all products.
 
 Lastly [State] is the one who has been pass around workflow like a football and make it work like a magic.
 
-Related files & part 
-* actions.dart   - Storing actions state classes
-* async.dart     - Storing async actions function
-* models.dart     - Storing page state & models
-* reducers.dart  - Storing reducers function
-* selectors.dart - Storing selectors function
-* views.dart     - Storing UI code
+[ Async API Part ]
+
+Almost all of the action must have 3 state if they wont resolve on main thread like ( Api Call )
+- LOADING, SUCCESS, FAIL
+
+* LOADING for define you already requesting for action & won't receive anymore ( must make a variables 'isLoading' for checking )
+* SUCCESS for define your request already success 
+* FAIL    for define your request has failed
 ```
+
+# File structure explaination
+
+<img src="https://github.com/Oskang09/Flutter-CB2019/blob/master/media/file_structure.jpg" />
+
+Depend on yourself likes, not needed for 100% follow my pattern.
+
+### Configuration
+
+* appstate.dart  - AppState ( Main state for the whole app ) 
+* asyncs.dart    - Async container ( Storing all of the async middleware like injector ) 
+* reducers.dart  - Reducer container ( Storing all of the reducers like injector ) 
+* router.dart    - Fluro router setup code
+* theme.dart     - App theme setup code
+
+### Stateful Widget
+
+* actions.dart    - Storing actions state classes
+* async.dart      - Storing async actions function
+* models.dart     - Storing page state & models
+* reducers.dart   - Storing reducers function
+* selectors.dart  - Storing selectors function
+* views.dart      - Storing UI code
+
+### Stateless Widget
+
+* {widget_name}.dart  - Storing UI code
+
 
 ### Reference
 
