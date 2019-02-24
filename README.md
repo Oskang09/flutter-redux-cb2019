@@ -175,6 +175,14 @@ Related files & part
 * views.dart     - Storing UI code
 ```
 
+### Reference
+
+Some good references for sharing when i use to develop & build flutter app.
+
+* https://github.com/Solido/awesome-flutter
+* https://medium.com/flutter-io
+
+
 ### Credits
 
 Thanks to Flutter Team has developed such a very good framework. Also thanks to one of my friends that is front-end developer i have used some example from him there and others developer who contribute and build some very useful framework like fluro and redux.
