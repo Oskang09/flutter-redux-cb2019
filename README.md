@@ -1,16 +1,41 @@
-# flutter_codebase
+### Plugins 
 
-A new Flutter project.
+* redux as "State Management"
+* fluro as "Navigator Router"
 
-## Getting Started
+### Main Setup
 
-This project is a starting point for a Flutter application.
+```dart
+void main() async 
+{
+    // This is for setup device orientation only
+    await SystemChrome.setPreferredOrientations([
+        DeviceOrientation.portraitUp,
+        DeviceOrientation.portraitDown
+    ]);
+}
+```
 
-A few resources to get you started if this is your first Flutter project:
+### Navigator & Fluro Setup
 
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
+```dart
+/*
+    Since for global usage so i define navigatorKey at AppState
+    * [navigatorKey] for work with redux so can update screen when have redux store.
+    * [router] for storing fluro router's definitions, see './config/router.dart' for more information about setup router.
+*/
+AppState.navigatorKey = GlobalKey<NavigatorState>();
+Router router = Router();
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+routers.forEach(
+    (route) {
+        router.define(
+            route.routePath,
+            handler: Handler(
+                handlerFunc: (context, params) => route.widget(params)
+            ),
+            transitionType: route.transitionType
+        );
+    }
+);
+```
