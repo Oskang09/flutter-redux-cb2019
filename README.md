@@ -1,7 +1,7 @@
 ### Plugins 
 
-* redux as "State Management"
-* fluro as "Navigator Router"
+* Redux as "State Management"
+* Fluro as "Navigator Router"
 
 ### Main Setup
 
