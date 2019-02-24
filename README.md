@@ -145,6 +145,7 @@ runApp(
 
 ### Extra information about routing
 
+```
 Flutter was my second front-end framework, i'm not sure this is normally or not. 
 Even you have set your [initialRoute], there still have a screen '/' at there.
 For router '/' is home page will auto generate. For this app as example when i start the app
@@ -154,6 +155,7 @@ mine navigator stack will be like
                                     |     /   |
                                     ----------- 
 so you will need pop out instead of replace or push when first action. If not will be weird at last.
+```
 
 # Workflow explaination
 
@@ -161,23 +163,28 @@ so you will need pop out instead of replace or push when first action. If not wi
 
 This will run the `store.dispatch(ACTION)` code in ui code mean one of the ui action has been firing. ( Button Tap, GestureDetector or anything else can dispatch action )
 
+
 2. [Middleware] receive action & run async middleware
 
 This will run before reducer. since middleware is async so won't block main thread if you don't block it at other middleware.
+
 
 3. [Reducer] receive action & run
 
 This will run the action if middleware doesn't block. Missing `next(action);` at middleware will make the action stop at middleware part. Reducers will resolve based on given action and return new state.
 
+
 4. [UI] 
 
 In here UI will again read updated state and re-rendering components.
+
 
 5. [Selector] 
 
 When receiving new state and updated value, you can use selectors to filter the data based on your defined function such as filtering product price lower than 5 from a list of all products.
 
-Lastly [State Model] is th eone who has been pass around in workflow like a football and make it work like magic. ( defined at models.dart )
+
+Lastly [State Model] is the one who has been pass around in workflow like a football and make it work like magic. ( defined at models.dart )
 
 ### Extra information for async workflow
 
