@@ -167,8 +167,6 @@ Almost all of the action must have 3 state if they wont resolve on main thread l
 
 # File structure explaination
 
-<img src="https://github.com/Oskang09/Flutter-CB2019/blob/master/media/file_structure.jpg" />
-
 Depend on yourself likes, not needed for 100% follow my pattern.
 
 ### Configuration
