@@ -177,6 +177,4 @@ Related files & part
 
 Thanks to Flutter Team has developed such a very good framework. Also thanks to one of my friends that is front-end developer i have used some example from him there.
 
-![Dart](https://steemitimages.com/0x0/https://cdn.steemitimages.com/DQmV9BLh8H1joRX7XxaaiFb4vbip6xMNjrzUw4FU2NpkBUr/dart-logo.png)
-
-![Flutter](https://cdn-images-1.medium.com/max/1600/1*gqBLqChWtWLq33DvWm6Nog.png)
+<img src="https://steemitimages.com/0x0/https://cdn.steemitimages.com/DQmV9BLh8H1joRX7XxaaiFb4vbip6xMNjrzUw4FU2NpkBUr/dart-logo.png" height="48"> <img src="https://cdn-images-1.medium.com/max/1600/1*gqBLqChWtWLq33DvWm6Nog.png" height="48">
