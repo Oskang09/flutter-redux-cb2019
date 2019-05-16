@@ -1,5 +1,6 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_codebase/pages/MainPage/views.dart';
 import 'package:flutter_codebase/pages/SplashScreen.dart';
 
 List<RouteDefinition> routers = [
@@ -8,6 +9,11 @@ List<RouteDefinition> routers = [
         widget: (params) => SplashScreen(),
         transitionType: TransitionType.inFromLeft
     ),
+    RouteDefinition(
+        routePath: "/",
+        widget: (params) => MainPage(),
+        transitionType: TransitionType.inFromLeft,
+    )
 ];
 
 class RouteDefinition
